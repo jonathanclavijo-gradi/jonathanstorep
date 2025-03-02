@@ -1,21 +1,62 @@
-{% schema %}
-{
-  "name": "Hero Banner",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Titulo"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Imagen de fondo"
-    }
-  ]
-}
-{% endschema %}
+{{ 'hero-banner.css' | asset_url | stylesheet_tag }}
 
-<div class="hero-banner" style="background-image: url('{{ section.settings.image}}');">
-  <h1>{{ section.settings.heading }}</h1>
-</div>
+<section class="hero-banner">
+  {% if section.settings.title != blank or section.settings.bg_image != blank %}
+    <figure class="hero-image-wrapper">
+      <img
+        width="600"
+        height="600"
+        class="hero-image"
+        src="{{ section.settings.bg_image | image_url: width: 600, height: 600 }}"
+        alt="{{ section.settings.bg_image_alt}}">
+    </figure>
+    <div class="hero-banner__content">
+      {% render 'article-hero-banner'
+        , title: section.settings.title
+        , subtitle: section.settings.subtitle %}
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a class="button-back" href="{{section.settings.button_link}}">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Mi Hero Banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Título"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Imagen de fondo"
+      },
+      {
+        "type": "text",
+        "id": "bg_image_alt",
+        "label": "Texto alternativo",
+        "info": "Description image"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "subtitulo de fondo"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Texto del boton"
+      }
+    ]
+  }
+{% endschema %}
