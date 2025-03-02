@@ -18,8 +18,12 @@
         <a class="button-back" href="{{section.settings.button_link}}">
           {{ section.settings.button_text }}
         </a>
+      {% else %}
+        <button>Botón de no renderizado</button>
       {% endif %}
     </div>
+  {% else %}
+    <h1>Hero Banner no renderizado</h1>
   {% endif %}
 </section>
 
@@ -31,23 +35,23 @@
       {
         "type": "text",
         "id": "title",
-        "label": "Título"
+        "label": "Title"
       },
       {
         "type": "image_picker",
         "id": "bg_image",
-        "label": "Imagen de fondo"
+        "label": "Background image"
       },
       {
         "type": "text",
         "id": "bg_image_alt",
-        "label": "Texto alternativo",
+        "label": "Alternative text",
         "info": "Description image"
       },
       {
         "type": "text",
         "id": "subtitle",
-        "label": "subtitulo de fondo"
+        "label": "Background subtitle"
       }, {
         "type": "url",
         "id": "button_link",
@@ -55,7 +59,7 @@
       }, {
         "type": "text",
         "id": "button_text",
-        "label": "Texto del boton"
+        "label": "Text in the button"
       }
     ]
   }
