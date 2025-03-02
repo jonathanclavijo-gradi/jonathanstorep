@@ -1,0 +1,12 @@
+{{'hero-banner.css' |  asset_url |  stylesheet_tag}}
+
+<div>
+    <h1 class="title-hero">
+        {% if title != blank %}
+            {{title}}
+            {% else %}
+            No hay nada renderizado
+        {% endif %}
+    </h1>
+    <p class="subtitle-hero">{{subtitle}}</p>
+</div>
