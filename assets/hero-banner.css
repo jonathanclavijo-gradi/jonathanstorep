@@ -98,3 +98,9 @@ figure img:hover {
     box-shadow: 0px -2px 9px -3px #67676754;
     transition: .1s all ease-in-out;
 }
+
+.recommended-product-date {
+    color: gray;
+    margin: 0;
+    font-size: 13px;
+}
