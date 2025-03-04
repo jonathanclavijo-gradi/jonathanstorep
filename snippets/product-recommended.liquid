@@ -1,0 +1,30 @@
+{{'hero-banner.css' |  asset_url |  stylesheet_tag }}
+
+<div class="card-product-recommended">
+    <a href="{{product.url}}">
+        {% if product.featured_image %}
+            <figure>
+                <img 
+                    width="300"
+                    height="300"
+                    src="{{product.featured_image |  image_url: width: 300, height: 300 }}" alt="{{product.title}}"
+                >  
+            </figure>
+            {% else %}
+                <img 
+                    class="recommended-product-image"
+                    width="300" 
+                    height="300" 
+                    src="{{product.featured_image |  image_url}}" 
+                    alt="Imagen no disponible"
+                >
+        {% endif %}
+        <h3>{{product.title}}</h3>
+        <p class="recommended-product-price">{{product.price | money}}</p>        
+        <p class="recommended-product-date">
+            {% if show_date %}
+                Date: {{product.created_at | date: "%b %d, %y"}}                                                                    
+            {% endif %}
+        </p>
+    </a>    
+</div>

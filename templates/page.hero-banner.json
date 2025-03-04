@@ -8,15 +8,20 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
-    "hero-banner": {
-      "type": "hero-banner",
-      "settings": {
-        "heading": "herp nanner"
-      }
-    }
-  },
-  "order": [
-    "hero-banner"
-  ]
+    "sections": {
+        "hero-banner": {
+            "type": "hero-banner",
+            "settings": {
+                "heading": "hero banner"
+            }
+        },
+        "recommended-products": {
+            "type": "recommended-products",
+            "padding_top": 28,
+        }
+    },
+    "order": [
+        "hero-banner",
+        "recommended-products"
+    ]
 }
