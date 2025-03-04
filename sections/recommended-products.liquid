@@ -1,0 +1,82 @@
+{{ 'hero-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="section-recommended-products">
+  {% if section.settings.title != blank %}
+    <div>
+      <h1 class="title-section-recommended">{{ section.settings.title }}</h1>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+  {% endif %}
+  <div class="section-grid-list-products">
+    {% for product in section.settings.products-list %}
+      {% if product %}
+        {% render 'product-recommended'
+          , product: product
+          , show_date: section.settings.show_date %}
+      {% else %}
+        <p>Selecciona un producto en el editor de temas</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Recommended Products",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "type": "product_list",
+        "limit": 10,
+        "id": "products-list",
+        "label": "Products"
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "default": 4,
+        "label": "Products max"
+      }, {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Mostrar fecha",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Producto",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Selecciona un producto"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 10,
+    "presets": [
+      {
+        "name": "Productos recomendados",
+        "settings": {
+          "title": "Descubre nuevas recomendaciones"
+        }
+      }
+    ]
+  }
+{% endschema %}
